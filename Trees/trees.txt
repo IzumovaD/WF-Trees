@@ -1,0 +1,241 @@
+---------------------------------------------------
+брызг:ROOT/и:END
+   брызг:ROOT/а:SUFF/л:SUFF/о:END
+   брызг:ROOT/а:SUFF/ть:SUFF
+      брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+         вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+      за:PREF/брызг:ROOT/а:SUFF/ть:SUFF
+         за:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            за:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         за:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      на:PREF/брызг:ROOT/а:SUFF/ть:SUFF
+      о:PREF/брызг:ROOT/а:SUFF/ть:SUFF
+         о:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            о:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         о:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      по:PREF/брызг:ROOT/а:SUFF/ть:SUFF
+         по:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+      раз:PREF/брызг:ROOT/а:SUFF/ть:SUFF
+         раз:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            раз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         раз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+
+
+Оставшиеся нераспределёнными слова:
+брызг:ROOT/а:SUFF/л:SUFF/к:SUFF/а:END
+брызг:ROOT/а:SUFF/ль:SUFF/н:SUFF/ый:END
+брызг:ROOT/а:SUFF/нь:SUFF/е:END
+брызг:ROOT/а:SUFF/ющ:SUFF/ий:END
+брызг:ROOT/ов:SUFF/ик:SUFF
+брызж:ROOT/ущ:SUFF/ий:END
+за:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
+на:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
+о:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
+о:PREF/брызг:ROOT/ива:SUFF/тель:SUFF
+по:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
+раз:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
+раз:PREF/брызг:ROOT/ива:SUFF/тель:SUFF
+---------------------------------------------------
+дум:ROOT/а:END
+   дум:ROOT/ец:SUFF
+   дум:ROOT/к:SUFF/а:END
+      вы:PREF/дум:ROOT/к:SUFF/а:END
+      при:PREF/дум:ROOT/к:SUFF/а:END
+   дум:ROOT/ушк:SUFF/а:END
+   дум:ROOT/н:SUFF/ый:END
+      без:PREF/дум:ROOT/н:SUFF/ый:END
+   дум:ROOT/ск:SUFF/ий:END
+   без:PREF/думь:ROOT/е:END
+   раз:PREF/думь:ROOT/е:END
+      раз:PREF/дум:ROOT/чив:SUFF/ый:END
+      раз:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         раз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         по:PREF/раз:PREF/дум:ROOT/а:SUFF/ть:SUFF
+            по:PREF/раз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+   дум:ROOT/а:SUFF/ть:SUFF
+      дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+         в:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         о:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+      вз:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         вз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+      вы:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         вы:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         на:PREF/вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      до:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         до:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            до:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         до:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         не:PREF/до:PREF/дум:ROOT/а:SUFF/ть:SUFF
+      за:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         за:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            при:PREF/за:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+      на:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         на:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            на:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         на:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         на:PREF/при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      об:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         об:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+            об:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+      от:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         от:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      пере:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         пере:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            пере:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         пере:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      по:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         по:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+         по:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      при:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         при:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+            при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+         при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+      про:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         про:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+            про:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+      у:PREF/дум:ROOT/а:SUFF/ть:SUFF
+         у:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+            у:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
+   вы:PREF/дум:ROOT/щик:SUFF
+   вы:PREF/дум:ROOT/щиц:SUFF/а:END
+   при:PREF/дум:ROOT/щик:SUFF
+   при:PREF/дум:ROOT/щиц:SUFF/а:END
+
+
+Оставшиеся нераспределёнными слова:
+в:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+в:PREF/дум:ROOT/чив:SUFF/ость:SUFF
+в:PREF/дум:ROOT/чив:SUFF/ый:END
+вы:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+вы:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
+за:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+за:PREF/дум:ROOT/чив:SUFF/ость:SUFF
+за:PREF/дум:ROOT/чив:SUFF/ый:END
+на:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+не:PREF/до:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+не:PREF/об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+не:PREF/про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+о:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+об:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
+пере:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+при:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+при:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
+при:PREF/за:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ость:SUFF
+про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+у:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+---------------------------------------------------
+с:PREF/мысл:ROOT
+   с:PREF/мысл:ROOT/ов:SUFF/ой:END
+   с:PREF/мышл:ROOT/ен:SUFF/ый:END
+      с:PREF/мышл:ROOT/ен:SUFF/ость:SUFF
+      не:PREF/с:PREF/мышл:ROOT/ен:SUFF/ый:END
+         не:PREF/с:PREF/мышл:ROOT/ен:SUFF/ыш:SUFF
+   с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+      о:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+         о:PREF/с:PREF/мысл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+            о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+         о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+         о:PREF/бес:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+            о:PREF/бес:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+               о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+            о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+         пере:PREF/о:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+            пере:PREF/о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+               пере:PREF/о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+   с:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+   бес:PREF/с:PREF/мысл:ROOT/и:SUFF/е:END
+   бес:PREF/с:PREF/мысл:ROOT/иц:SUFF/а:END
+   о:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
+      о:PREF/бес:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
+      пере:PREF/о:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
+
+
+Оставшиеся нераспределёнными слова:
+бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
+вы:PREF/мысел:ROOT
+вы:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+вы:PREF/мышл:ROOT/енн:SUFF/ый:END
+вы:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+вы:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+до:PREF/мысел:ROOT
+до:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+до:PREF/мысл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+за:PREF/мысел:ROOT
+за:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+за:PREF/мышл:ROOT/енн:SUFF/ый:END
+за:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+за:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+из:PREF/мышл:ROOT/ени:SUFF/е:END
+из:PREF/мышл:ROOT/енн:SUFF/ый:END
+из:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+из:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+мысл:ROOT/енн:SUFF/ый:END
+мысл:ROOT/и:SUFF/тель:SUFF
+мысл:ROOT/и:SUFF/тель:SUFF/н:SUFF/ый:END
+мысл:ROOT/и:SUFF/ть:SUFF
+мысл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+мысл:ROOT/им:SUFF/ый:END
+мысл:ROOT/ишк:SUFF/а:END
+мышл:ROOT/ени:SUFF/е:END
+не:PREF/до:PREF/мысл:ROOT/и:SUFF/е:END
+не:PREF/мысл:ROOT/им:SUFF/о:END
+не:PREF/мысл:ROOT/им:SUFF/ый:END
+не:PREF/пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
+не:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
+о:PREF/бес:PREF/с:PREF/мысл:ROOT/е:SUFF/ть:SUFF
+о:PREF/бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
+о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
+о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
+о:PREF/с:PREF/мысл:ROOT/я:SUFF/ть:SUFF
+пере:PREF/о:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
+пере:PREF/о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
+по:PREF/мысел:ROOT
+по:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+по:PREF/мышл:ROOT/ени:SUFF/е:END
+по:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+по:PREF/раз:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+по:PREF/раз:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
+при:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+при:PREF/мышл:ROOT/енн:SUFF/ый:END
+при:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+при:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+со:PREF/у:PREF/мышл:ROOT/енн:SUFF/ик:SUFF
+со:PREF/у:PREF/мышл:ROOT/енн:SUFF/иц:SUFF/а:END
+у:PREF/мысел:ROOT
+у:PREF/мысл:ROOT/и:SUFF/ть:SUFF
+у:PREF/мышл:ROOT/енн:SUFF/ый:END
+у:PREF/мышл:ROOT/я:SUFF/ть:SUFF
+у:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+---------------------------------------------------
+собак:ROOT/а:END
+   собач:ROOT/еньк:SUFF/а:END
+   собач:ROOT/к:SUFF/а:END
+   собач:ROOT/ин:SUFF/а:END
+   собач:ROOT/ищ:SUFF/а:END
+   собач:ROOT/ат:SUFF/а:END
+   собач:ROOT/ей:SUFF
+   собач:ROOT/ник:SUFF
+   собач:ROOT/ниц:SUFF/а:END
+   собач:ROOT/онк:SUFF/а:END
+   собач:ROOT/ий:SUFF
+   по:PREF/-:HYPH/собачь:ROOT/и:END
+
+
+Оставшиеся нераспределёнными слова:
+на:PREF/собач:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+при:PREF/собач:ROOT/и:SUFF/ть:SUFF
+собач:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX

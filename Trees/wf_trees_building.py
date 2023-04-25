@@ -454,62 +454,7 @@ def search_derivate_for_one_root_verb(morphs_key, nest, reflexive_verbs, imperfe
                 if diff_1(morphs_key, morphs_word, "SUFF"):
                     childs.append(word)
                     proc_words.append(word)
-    # 6. отвлечённые существительные
-    for word in abstract_nouns:
-        if not (word in proc_words):
-            morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
-                childs.append(word)
-                proc_words.append(word)
-    # 7. существительные, обозначающие названия лиц по действию
-    for word in nouns_persons_by_action:
-        if not (word in proc_words):
-            morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
-                childs.append(word)
-                proc_words.append(word)
-    # 8. остальные существительные
-    for word in nest:
-        if pos_tags[word] == "NOUN":
-            if not ((word in abstract_nouns) or (word in nouns_persons_by_action)
-                    or (word in proc_words)):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_1_any(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
-    # 9. причастия
-    for word in nest:
-        if pos_tags[word] == "PARTICIPLE":
-            if not (word in proc_words):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_1_any(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
-    # 10. деепричастия
-    for word in nest:
-        if pos_tags[word] == "ADV PARTICIPLE":
-            if not (word in proc_words):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_1_any(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
-    # 11. прилагательные
-    for word in nest:
-        if pos_tags[word] == "ADJ":
-            if not (word in proc_words):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_1_any(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
-    # 12. наречия
-    for word in nest:
-        if pos_tags[word] == "ADVERB":
-            if not (word in proc_words):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_1_any(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
-    # 13. а) глаголы, образованные только с помощью приставок (кроме НЕ и АНТИ)
+    # 6. а) глаголы, образованные только с помощью приставок (кроме НЕ и АНТИ)
     for word in nest:
         if pos_tags[word] == "VERB":
             if not ((word in reflexive_verbs) or (word in imperfective_verbs) or (word in single_action_verbs)
@@ -519,13 +464,68 @@ def search_derivate_for_one_root_verb(morphs_key, nest, reflexive_verbs, imperfe
                 if diff_1(morphs_key, morphs_word, "PREF"):
                     childs.append(word)
                     proc_words.append(word)
-    # 13. б) глаголы, образованные только с помощью приставок НЕ и АНТИ
+    # 6. б) глаголы, образованные только с помощью приставок НЕ и АНТИ
     for word in negative_pref_verbs:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
             if diff_1_any(morphs_key, morphs_word):
                 childs.append(word)
                 proc_words.append(word)
+    # 7. причастия
+    for word in nest:
+        if pos_tags[word] == "PARTICIPLE":
+            if not (word in proc_words):
+                morphs_word = morph_selection(word, pos_tags)
+                if diff_1_any(morphs_key, morphs_word):
+                    childs.append(word)
+                    proc_words.append(word)
+    # 8. деепричастия
+    for word in nest:
+        if pos_tags[word] == "ADV PARTICIPLE":
+            if not (word in proc_words):
+                morphs_word = morph_selection(word, pos_tags)
+                if diff_1_any(morphs_key, morphs_word):
+                    childs.append(word)
+                    proc_words.append(word)
+    # 9. отвлечённые существительные
+    for word in abstract_nouns:
+        if not (word in proc_words):
+            morphs_word = morph_selection(word, pos_tags)
+            if diff_1(morphs_key, morphs_word, "SUFF"):
+                childs.append(word)
+                proc_words.append(word)
+    # 10. существительные, обозначающие названия лиц по действию
+    for word in nouns_persons_by_action:
+        if not (word in proc_words):
+            morphs_word = morph_selection(word, pos_tags)
+            if diff_1(morphs_key, morphs_word, "SUFF"):
+                childs.append(word)
+                proc_words.append(word)
+    # 11. остальные существительные
+    for word in nest:
+        if pos_tags[word] == "NOUN":
+            if not ((word in abstract_nouns) or (word in nouns_persons_by_action)
+                    or (word in proc_words)):
+                morphs_word = morph_selection(word, pos_tags)
+                if diff_1_any(morphs_key, morphs_word):
+                    childs.append(word)
+                    proc_words.append(word)
+    # 12. прилагательные
+    for word in nest:
+        if pos_tags[word] == "ADJ":
+            if not (word in proc_words):
+                morphs_word = morph_selection(word, pos_tags)
+                if diff_1_any(morphs_key, morphs_word):
+                    childs.append(word)
+                    proc_words.append(word)
+    # 13. наречия
+    for word in nest:
+        if pos_tags[word] == "ADVERB":
+            if not (word in proc_words):
+                morphs_word = morph_selection(word, pos_tags)
+                if diff_1_any(morphs_key, morphs_word):
+                    childs.append(word)
+                    proc_words.append(word)
     return childs
 
 # функция поиска производного слова для простого наречия

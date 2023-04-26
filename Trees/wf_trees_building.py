@@ -169,16 +169,15 @@ def search_words_by_suffs(nest, suffs, pos_tags, pos):
                     break
     return res
 
-# функция поиска простых слов по префиксам
-def search_words_by_prefs(nest, prefs, pos_tags, pos):
+# функция поиска простых слов c префиксами отрицания
+def search_negative_words(nest, pos_tags, pos):
     res = []
     for word in nest:
         if pos_tags[word] == pos:
             morphs = morph_selection(word, pos_tags)
-            for pref in prefs:
-                if pref in morphs["PREF"]:
+            if len(morphs["PREF"]) != 0:
+                if morphs["PREF"][0] in negative_prefs:
                     res.append(word)
-                    break
     return res
 
 # функция поиска простых слов по постфиксам
@@ -794,15 +793,15 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
     # существительные, обозначающие названия лиц по действию)
     nouns_persons_by_action = search_words_by_suffs(nest, nouns_persons_by_action_suffs, pos_tags, "NOUN")
     # существительные с префиксами отрицания
-    negative_pref_nouns = search_words_by_prefs(nest, negative_prefs, pos_tags, "NOUN")
+    negative_pref_nouns = search_negative_words(nest, pos_tags, "NOUN")
     # прилагательные с префиксами отрицания
-    negative_pref_adjectives = search_words_by_prefs(nest, negative_prefs, pos_tags, "ADJ")
+    negative_pref_adjectives = search_negative_words(nest, pos_tags, "ADJ")
     # глаголы с префиксами отрицания
-    negative_pref_verbs = search_words_by_prefs(nest, negative_prefs, pos_tags, "VERB")
+    negative_pref_verbs = search_negative_words(nest, pos_tags, "VERB")
     # деепричастия с префиксами отрицания
-    negative_pref_adv_participles = search_words_by_prefs(nest, negative_prefs, pos_tags, "ADV PARTICIPLE")
+    negative_pref_adv_participles = search_negative_words(nest, pos_tags, "ADV PARTICIPLE")
     # причастия с префиксами отрицания
-    negative_pref_participles = search_words_by_prefs(nest, negative_prefs, pos_tags, "PARTICIPLE")
+    negative_pref_participles = search_negative_words(nest, pos_tags, "PARTICIPLE")
     #выполняем, пока все слова не будут распределены по словообразоват. цепочкам или больше ничего никуда нельзя присоединить 
     # с разницей в 1 морфему
     while len(nest) != 0:

@@ -159,7 +159,6 @@ def main_processing_roots(data):
     for k in range(len(roots)-1):
         group = roots[k]
         if group not in groups_to_remove:
-            print(group)
             group_to_append = group
             groups_to_remove.append(group)
             for root in group_to_append:
@@ -229,7 +228,6 @@ def main_processing_roots(data):
     for k in range(len(roots)-1):
         group = roots[k]
         if group not in groups_to_remove:
-            print(group)
             group_to_append = group
             groups_to_remove.append(group)
             for root in group_to_append:

@@ -23,7 +23,9 @@ negative_prefs = ['не', 'анти']
 # постфиксы возвратных глаголов, причастий и деепричастий
 reflexive_postfix = ['ся', 'сь']
 # инфиксы глаголов
-infixes = ['а', 'я', 'е', 'и']
+infixes = ['а', 'я', 'е', 'и', 'о']
+# формообразующие суффиксы инфинитивов
+form_suffs = ['ти', 'ть', 'чь']
 
 # функция выделения морфем в слове
 def morph_selection(word, pos_tags):
@@ -40,14 +42,17 @@ def morph_selection(word, pos_tags):
             res["SUFF"].append(morph[0])
         if "POSTFIX" in morph[1]:
             res["POSTFIX"].append(morph[0])
+    to_delete = -1
+    # не учитываем инфиксы
+    for i in range(0, len(res["SUFF"])):
+        if (res["SUFF"][i] in infixes) and (i != len(res["SUFF"]) - 1):
+            to_delete = i
+    if to_delete >= 0:
+        del res["SUFF"][to_delete]
+    # не учитываем формообразующие суффиксы у инфинитивов
     if pos_tags[word] == "VERB":
-        to_delete = -1
-        # удаляем инфиксы
-        for i in range(0, len(res["SUFF"])):
-            if (res["SUFF"][i] in infixes) and (i != len(res["SUFF"]) - 1):
-                to_delete = i
-        if to_delete >= 0:
-            del res["SUFF"][to_delete]
+        if res["SUFF"][len(res["SUFF"])-1] in form_suffs:
+            del res["SUFF"][len(res["SUFF"])-1]
     return res
 
 # функция определения части речи слова
@@ -68,12 +73,12 @@ def search_pos(word, morph):
     if ("ADJF" in all_poses) or ("ADJS" in all_poses):
         # прилагательное
         return "ADJ"
-    if ("INFN" in all_poses) or ("VERB" in all_poses):
-        # глагол
-        return "VERB"
     if "NOUN" in all_poses:
         # существительное
         return "NOUN"
+    if ("INFN" in all_poses) or ("VERB" in all_poses):
+        # глагол
+        return "VERB"
     # наречие в остальных случаях
     return "ADVERB"
 
@@ -200,7 +205,7 @@ def search_imperfective_verbs(nest, morph, pos_tags):
                 res.append(word)
     return res
 
-# функция, возвращающая True, если child отличается от parent только добавлением одного любого морфа
+# функция, возвращающая True, если child отличается от parent только добавлением одного любого морфа (или если разницы нет)
 def diff_1_any(parent, child):
     diff = 0
     for morphs in parent:
@@ -211,12 +216,12 @@ def diff_1_any(parent, child):
                 if not (elem in child[morphs]):
                     return False
             diff += len(child[morphs]) - len(tmp)
-    if diff == 1:
+    if diff == 1 or diff == 0:
         return True
     else:
         return False
     
-# функция, возвращающая True, если child отличается от parent только добавлением одного конкретного морфа
+# функция, возвращающая True, если child отличается от parent только добавлением одного конкретного морфа (или если разницы нет)
 def diff_1(parent, child, morph):
     for morphs in parent:
         if morphs != morph and morphs != "ROOT":
@@ -231,7 +236,8 @@ def diff_1(parent, child, morph):
                 for elem in parent[morphs]:
                     if not (elem in child[morphs]):
                         return False
-                if len(child[morphs]) - len(parent[morphs]) != 1:
+                diff = len(child[morphs]) - len(parent[morphs])
+                if diff != 1 and diff != 0:
                     return False
     return True
 

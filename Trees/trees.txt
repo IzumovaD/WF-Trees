@@ -1,20 +1,17 @@
 ---------------------------------------------------
 брызг:ROOT/а:SUFF/ть:SUFF
    брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-      вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
-      вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
-      с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
    за:PREF/брызг:ROOT/а:SUFF/ть:SUFF
       за:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         за:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       за:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+         за:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       за:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
    на:PREF/брызг:ROOT/а:SUFF/ть:SUFF
       на:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
    о:PREF/брызг:ROOT/а:SUFF/ть:SUFF
       о:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         о:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       о:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+         о:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
          о:PREF/брызг:ROOT/ива:SUFF/тель:SUFF
       о:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
    по:PREF/брызг:ROOT/а:SUFF/ть:SUFF
@@ -22,8 +19,8 @@
       по:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
    раз:PREF/брызг:ROOT/а:SUFF/ть:SUFF
       раз:PREF/брызг:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         раз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       раз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+         раз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
          раз:PREF/брызг:ROOT/ива:SUFF/тель:SUFF
       раз:PREF/брызг:ROOT/а:SUFF/нн:SUFF/ый:END
    брызг:ROOT/а:SUFF/ющ:SUFF/ий:END
@@ -33,8 +30,11 @@
    брызг:ROOT/а:SUFF/нь:SUFF/е:END
    брызг:ROOT/и:END
    вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
    вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
    с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
 
 
 Оставшиеся нераспределёнными слова:
@@ -43,14 +43,12 @@
 ---------------------------------------------------
 дум:ROOT/а:SUFF/ть:SUFF
    дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-      в:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
-      о:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
    вз:PREF/дум:ROOT/а:SUFF/ть:SUFF
       вз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
    вы:PREF/дум:ROOT/а:SUFF/ть:SUFF
       вы:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
          вы:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
       вы:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
       вы:PREF/дум:ROOT/к:SUFF/а:END
@@ -59,20 +57,19 @@
       на:PREF/вы:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
    до:PREF/дум:ROOT/а:SUFF/ть:SUFF
       до:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         до:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       до:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         до:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       не:PREF/до:PREF/дум:ROOT/а:SUFF/ть:SUFF
          не:PREF/до:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
    за:PREF/дум:ROOT/а:SUFF/ть:SUFF
       за:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         при:PREF/за:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       за:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
       за:PREF/дум:ROOT/чив:SUFF/ый:END
          за:PREF/дум:ROOT/чив:SUFF/ость:SUFF
    на:PREF/дум:ROOT/а:SUFF/ть:SUFF
       на:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         на:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       на:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         на:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       на:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
       на:PREF/при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
    об:PREF/дум:ROOT/а:SUFF/ть:SUFF
@@ -84,8 +81,8 @@
       от:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
    пере:PREF/дум:ROOT/а:SUFF/ть:SUFF
       пере:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         пере:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       пере:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         пере:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       пере:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
    по:PREF/дум:ROOT/а:SUFF/ть:SUFF
       по:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
@@ -94,8 +91,8 @@
          по:PREF/раз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
    при:PREF/дум:ROOT/а:SUFF/ть:SUFF
       при:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         при:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
          при:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
       при:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
       при:PREF/дум:ROOT/к:SUFF/а:END
@@ -107,8 +104,8 @@
       про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
    раз:PREF/дум:ROOT/а:SUFF/ть:SUFF
       раз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-         раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
+         раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       раз:PREF/дум:ROOT/чив:SUFF/ый:END
    у:PREF/дум:ROOT/а:SUFF/ть:SUFF
       у:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
@@ -129,10 +126,13 @@
 в:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
 в:PREF/дум:ROOT/чив:SUFF/ость:SUFF
 в:PREF/дум:ROOT/чив:SUFF/ый:END
+в:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
 не:PREF/об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
 не:PREF/про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
 о:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+о:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
 при:PREF/за:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
+при:PREF/за:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
 про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ость:SUFF
 ---------------------------------------------------
 мысль:ROOT
@@ -146,8 +146,8 @@
       вы:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
    до:PREF/мысел:ROOT
       до:PREF/мысл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
-         до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+         до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
       не:PREF/до:PREF/мысл:ROOT/и:SUFF/е:END
    за:PREF/мысел:ROOT
       за:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
@@ -162,16 +162,16 @@
             не:PREF/с:PREF/мышл:ROOT/ен:SUFF/ыш:SUFF
       о:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
          о:PREF/с:PREF/мысл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
-            о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
          о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+            о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
             о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
                о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
                пере:PREF/о:PREF/с:PREF/мысл:ROOT/ива:SUFF/ни:SUFF/е:END
          о:PREF/бес:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF
             о:PREF/бес:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
-               о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
             о:PREF/бес:PREF/с:PREF/мысл:ROOT/е:SUFF/ть:SUFF
             о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
+               о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
             о:PREF/бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
             о:PREF/бес:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
          пере:PREF/о:PREF/с:PREF/мысл:ROOT/и:SUFF/ть:SUFF

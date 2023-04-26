@@ -740,7 +740,7 @@ def search_derivate_2(parrent_words, proc_words, nest, pos_tags):
             nest.remove(word)
 
 # функция обработки словообразовательного гнезда (СГ)
-def nest_processing(vertices, nest, undistributed_words, morph):
+def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph):
     # словарь, где ключ (производящее слово) - строка, а значение (производные слова) - список строк
     res = {}
     # список обработанных слов
@@ -753,8 +753,16 @@ def nest_processing(vertices, nest, undistributed_words, morph):
     for word in pos_tags:
         if pos_tags[word] == "NUMR":
             nest.discard(word)
-    #поиск вершины СГ
-    vertex = search_vertex(nest, pos_tags)
+    vertex = ''
+    # проверяем, выбрана ли уже вершина для дерева
+    for line in custom_vertices:
+        line = line.replace('\n','')
+        if line in nest:
+            vertex = line
+    # если не выбрана
+    if vertex == '':
+        # поиск вершины СГ функцией
+        vertex = search_vertex(nest, pos_tags)
     res.update({vertex : []})
     vertices.append(vertex)
     nest.remove(vertex)
@@ -816,22 +824,22 @@ def nest_processing(vertices, nest, undistributed_words, morph):
     return res
 
 #основная функция обработки всех групп однокоренных слов
-def main_processing(data):
+def main_processing(data, custom_vertices):
      # список списков, каждый список - нераспределнные в дереве слова
     undistributed_words = []
     start_time = time.time()
     morph = pymorphy2.MorphAnalyzer()
-    #словообразовательные гнёзда - массив словарей, где в каждом словаре ключ - это
-    #слово, а значение - массив производных от него слов
-    #кроме того, есть отдельный элемент с ключом "vertex", хранящий вершину СГ
+    # словообразовательные гнёзда - массив словарей, где в каждом словаре ключ - это
+    # слово, а значение - массив производных от него слов
+    # кроме того, есть отдельный элемент с ключом "vertex", хранящий вершину СГ
     word_formation_nests = []
-    #массив вершин СГ
+    # массив вершин СГ
     vertices = []
     for nest in data:
         # слова в каждом гнезде сортируем в алфавитном порядке
         nest.sort()
         # обработка текущей группы слов
-        word_formation_nests.append(nest_processing(vertices, nest, undistributed_words, morph))
+        word_formation_nests.append(nest_processing(vertices, custom_vertices, nest, undistributed_words, morph))
 
     filename = 'trees.json'
     with open(filename, 'w') as f:

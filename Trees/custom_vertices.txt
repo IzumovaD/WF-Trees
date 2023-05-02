@@ -1,3 +1,2 @@
 брызг:ROOT/а:SUFF/ть:SUFF
 дум:ROOT/а:SUFF/ть:SUFF
-собач:ROOT/и:SUFF/ть:SUFF

@@ -23,15 +23,6 @@ def has_allomorphs(root):
             return group
     return False
 
-def extract_root(word):
-    pattern = "\w+:ROOT"
-    tmp = word.split()
-    tmp1 = tmp[1]
-    root = re.findall(pattern, tmp1)[0]
-    t = root.find(':')
-    root = root[:t]
-    return root
-
 def main_processing_roots(data):
     start_time = time.time()
     print("Сбор групп алломорфных корней" + "\n")

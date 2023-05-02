@@ -222,21 +222,21 @@
 со:PREF/у:PREF/мышл:ROOT/енн:SUFF/ик:SUFF
 со:PREF/у:PREF/мышл:ROOT/енн:SUFF/иц:SUFF/а:END
 ---------------------------------------------------
-собач:ROOT/и:SUFF/ть:SUFF
-   собач:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
-   при:PREF/собач:ROOT/и:SUFF/ть:SUFF
-   собак:ROOT/а:END
-   собач:ROOT/ат:SUFF/а:END
-   собач:ROOT/ей:SUFF
+собак:ROOT/а:END
    собач:ROOT/еньк:SUFF/а:END
+   собач:ROOT/к:SUFF/а:END
    собач:ROOT/ин:SUFF/а:END
    собач:ROOT/ищ:SUFF/а:END
-   собач:ROOT/к:SUFF/а:END
+   собач:ROOT/ат:SUFF/а:END
+   собач:ROOT/ей:SUFF
    собач:ROOT/ник:SUFF
    собач:ROOT/ниц:SUFF/а:END
    собач:ROOT/онк:SUFF/а:END
    собач:ROOT/ий:SUFF
    по:PREF/-:HYPH/собачь:ROOT/и:END
+   при:PREF/собач:ROOT/и:SUFF/ть:SUFF
+   собач:ROOT/и:SUFF/ть:SUFF
+   собач:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
 
 
 Оставшиеся нераспределёнными слова:

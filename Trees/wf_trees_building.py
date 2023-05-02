@@ -22,7 +22,7 @@ repeated_action_verbs_suffs = ['ива', 'ыва']
 negative_prefs = ['не', 'анти']
 # постфиксы возвратных глаголов, причастий и деепричастий
 reflexive_postfix = ['ся', 'сь']
-# инфиксы глаголов
+# интерфиксы глаголов
 infixes = ['а', 'я', 'е', 'и', 'о']
 # формообразующие суффиксы инфинитивов
 form_suffs = ['ти', 'ть', 'чь']
@@ -43,7 +43,7 @@ def morph_selection(word, pos_tags):
         if "POSTFIX" in morph[1]:
             res["POSTFIX"].append(morph[0])
     to_delete = -1
-    # не учитываем инфиксы
+    # не учитываем интерфиксы
     for i in range(0, len(res["SUFF"])):
         if (res["SUFF"][i] in infixes) and (i != len(res["SUFF"]) - 1):
             to_delete = i
@@ -241,7 +241,7 @@ def diff_1(parent, child, morph):
     return True
 
 # функция поиска производного слова для простого существительного
-def search_derivate_for_one_root_noun(morphs_key, nest, diminutive_nouns, magnifying_nouns, negative_pref_nouns,
+def search_derivate_for_noun(morphs_key, nest, diminutive_nouns, magnifying_nouns, negative_pref_nouns,
                                       negative_pref_adjectives, negative_pref_verbs, pos_tags, proc_words):
     childs = []
     # 1. уменьшительно-ласкательные существительные
@@ -340,7 +340,7 @@ def search_derivate_for_one_root_noun(morphs_key, nest, diminutive_nouns, magnif
     return childs
 
 # функция поиска производного слова для простого прилагательного
-def search_derivate_for_one_root_adj(morphs_key, nest, diminutive_adjectives, 
+def search_derivate_for_adj(morphs_key, nest, diminutive_adjectives, 
                                      magnifying_adjectives, negative_pref_adjectives, 
                                      negative_pref_nouns, pos_tags, proc_words):
     childs = []
@@ -417,7 +417,7 @@ def search_derivate_for_one_root_adj(morphs_key, nest, diminutive_adjectives,
     return childs
 
 # функция поиска производного слова для простого глагола
-def search_derivate_for_one_root_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_participles,
+def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_participles,
                                       reflexive_participles, imperfective_verbs,
                                       single_action_verbs, repeated_action_verbs,
                                       abstract_nouns, nouns_persons_by_action, 
@@ -535,7 +535,7 @@ def search_derivate_for_one_root_verb(morphs_key, nest, reflexive_verbs, reflexi
     return childs
 
 # функция поиска производного слова для простого наречия
-def search_derivate_for_one_root_adverb(morphs_key, nest, pos_tags, proc_words):
+def search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words):
     childs = []
     # 1. прилагательные
     for word in nest:
@@ -572,7 +572,7 @@ def search_derivate_for_one_root_adverb(morphs_key, nest, pos_tags, proc_words):
     return childs
 
 # функция поиска производного слова для простого деепричастия
-def search_derivate_for_one_root_adv_participle(morphs_key, nest,
+def search_derivate_for_adv_participle(morphs_key, nest,
                                                 reflexive_adv_participles, negative_pref_adv_participles,
                                                 pos_tags, proc_words):
     childs = []
@@ -602,7 +602,7 @@ def search_derivate_for_one_root_adv_participle(morphs_key, nest,
     return childs
 
 # функция поиска производного слова для простого причастия
-def search_derivate_for_one_root_participle(morphs_key, nest,
+def search_derivate_for_participle(morphs_key, nest,
                                             reflexive_participles, negative_pref_participles,
                                             pos_tags, proc_words):
     childs = []
@@ -646,20 +646,20 @@ def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnify
             # производящее слово - существительное
             if pos_tags[key] == "NOUN":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_noun(morphs_key, nest, diminutive_nouns, 
+                childs = search_derivate_for_noun(morphs_key, nest, diminutive_nouns, 
                                                             magnifying_nouns, negative_pref_nouns, 
                                                             negative_pref_adjectives, negative_pref_verbs,
                                                             pos_tags, proc_words)
             # производящее слово - прилагательное
             if pos_tags[key] == "ADJ":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_adj(morphs_key, nest, diminutive_adjectives, 
+                childs = search_derivate_for_adj(morphs_key, nest, diminutive_adjectives, 
                                                             magnifying_adjectives, negative_pref_adjectives, 
                                                             negative_pref_nouns, pos_tags, proc_words)
             # производящее слово - глагол
             if pos_tags[key] == "VERB":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_participles,
+                childs = search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_participles,
                                                           reflexive_participles, imperfective_verbs,
                                                           single_action_verbs, repeated_action_verbs,
                                                           abstract_nouns, nouns_persons_by_action, 
@@ -667,17 +667,17 @@ def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnify
             # производящее слово - наречие
             if pos_tags[key] == "ADVERB":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_adverb(morphs_key, nest, pos_tags, proc_words)
+                childs = search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words)
             # производящее слово - деепричастие
             if pos_tags[key] == "ADV PARTICIPLE":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_adv_participle(morphs_key, nest,
+                childs = search_derivate_for_adv_participle(morphs_key, nest,
                                                                         reflexive_adv_participles, negative_pref_adv_participles,
                                                                         pos_tags, proc_words)
             # производящее слово - причастие
             if pos_tags[key] == "PARTICIPLE":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_one_root_participle(morphs_key, nest,
+                childs = search_derivate_for_participle(morphs_key, nest,
                                                                     reflexive_participles, negative_pref_participles,
                                                                     pos_tags, proc_words)
         if len(childs) != 0:
@@ -709,8 +709,7 @@ def diff_2(parent, child):
     return True
 
 # функция поиска производного слова, образованного с помощью одной приставки и одного суффикса
-def search_derivate_for_one_root_word_2(morphs_key, nest,
-                                        pos_tags, proc_words, reflexive_verbs, pos_tag):
+def search_derivate_for_word_2(morphs_key, nest, pos_tags, proc_words, reflexive_verbs, pos_tag):
     childs = []
     for word in nest:
         if pos_tags[word] == pos_tag:
@@ -729,8 +728,8 @@ def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags
         if pos_tags[key] in ("NOUN", "ADJ", "VERB"):
             morphs_key = morph_selection(key, pos_tags)
             if len(morphs_key["ROOT"]) == 1:
-                childs = search_derivate_for_one_root_word_2(morphs_key, nest,
-                                                             pos_tags, proc_words, reflexive_verbs, pos_tags[key])
+                childs = search_derivate_for_word_2(morphs_key, nest,
+                                                    pos_tags, proc_words, reflexive_verbs, pos_tags[key])
         if len(childs) != 0:
             for child in childs:
                 parrent_words[key].append(child)
@@ -802,7 +801,7 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
     negative_pref_adv_participles = search_negative_words(nest, pos_tags, "ADV PARTICIPLE")
     # причастия с префиксами отрицания
     negative_pref_participles = search_negative_words(nest, pos_tags, "PARTICIPLE")
-    #выполняем, пока все слова не будут распределены по словообразоват. цепочкам или больше ничего никуда нельзя присоединить 
+    # выполняем, пока все слова не будут распределены по словообразоват. цепочкам или больше ничего никуда нельзя присоединить 
     # с разницей в 1 морфему
     while len(nest) != 0:
         while len(nest) != 0:
@@ -824,7 +823,7 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
     undistributed_words.append(nest)
     return res
 
-#основная функция обработки всех групп однокоренных слов
+# основная функция обработки всех групп однокоренных слов
 def main_processing(data, custom_vertices):
      # список списков, каждый список - нераспределнные в дереве слова
     undistributed_words = []
@@ -850,7 +849,7 @@ def main_processing(data, custom_vertices):
     print("--- %s seconds ---\n" % (time.time() - start_time))
     print("Общее число деревьев: ", len(data))
 
-#функция печати одного гнезда
+# функция печати одного гнезда
 def print_nest(nest, key, k):
     res = ""
     #отступ для отдельного уровня
@@ -862,7 +861,7 @@ def print_nest(nest, key, k):
         res += word + "\n" + print_nest(nest, word, k + 1)
     return res
 
-#функция печати всех построенных гнёзд в файл
+# функция печати всех построенных гнёзд в файл
 def print_nests_in_file(word_formation_nests, vertices, undistributed_words):
     #печать СГ в файл
     string = ""

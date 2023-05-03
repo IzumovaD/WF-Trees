@@ -30,16 +30,16 @@
       брызг:ROOT/а:SUFF/ль:SUFF/н:SUFF/ый:END
    брызг:ROOT/а:SUFF/нь:SUFF/е:END
    брызг:ROOT/и:END
+   вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+   вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+   с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
+      с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
 
 
 Оставшиеся нераспределёнными слова:
 брызг:ROOT/ов:SUFF/ик:SUFF
-вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
-вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
-вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
-вы:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
-с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
-с:PREF/брызг:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
 ---------------------------------------------------
 дум:ROOT/а:SUFF/ть:SUFF
    дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
@@ -76,6 +76,7 @@
          об:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
          об:PREF/дум:ROOT/ыва:SUFF/ни:SUFF/е:END
       об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+      не:PREF/об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
    от:PREF/дум:ROOT/а:SUFF/ть:SUFF
       от:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
    пере:PREF/дум:ROOT/а:SUFF/ть:SUFF
@@ -100,6 +101,7 @@
       про:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
          про:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
       про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
+      не:PREF/про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
    раз:PREF/дум:ROOT/а:SUFF/ть:SUFF
       раз:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
       раз:PREF/дум:ROOT/ыва:SUFF/ть:SUFF
@@ -120,15 +122,13 @@
    раз:PREF/думь:ROOT/е:END
    дум:ROOT/н:SUFF/ый:END
    дум:ROOT/ск:SUFF/ий:END
+   в:PREF/дум:ROOT/чив:SUFF/ый:END
+      в:PREF/дум:ROOT/чив:SUFF/ость:SUFF
 
 
 Оставшиеся нераспределёнными слова:
 в:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
-в:PREF/дум:ROOT/чив:SUFF/ость:SUFF
-в:PREF/дум:ROOT/чив:SUFF/ый:END
 в:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
-не:PREF/об:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
-не:PREF/про:PREF/дум:ROOT/а:SUFF/нн:SUFF/ый:END
 о:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
 о:PREF/дум:ROOT/ыва:SUFF/ть:SUFF/ся:POSTFIX
 при:PREF/за:PREF/дум:ROOT/а:SUFF/ть:SUFF/ся:POSTFIX
@@ -146,6 +146,7 @@
    до:PREF/мысел:ROOT
       до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF
          до:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
+      не:PREF/до:PREF/мысл:ROOT/и:SUFF/е:END
    за:PREF/мысел:ROOT
    по:PREF/мысел:ROOT
    с:PREF/мысл:ROOT
@@ -167,7 +168,13 @@
             пере:PREF/о:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
          о:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
       о:PREF/с:PREF/мысл:ROOT/я:SUFF/ть:SUFF
+      бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
+      бес:PREF/с:PREF/мысл:ROOT/и:SUFF/е:END
+      бес:PREF/с:PREF/мысл:ROOT/иц:SUFF/а:END
    у:PREF/мысел:ROOT
+      не:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
+      пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
+         не:PREF/пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
    вы:PREF/мысл:ROOT/и:SUFF/ть:SUFF
       вы:PREF/мышл:ROOT/енн:SUFF/ый:END
    вы:PREF/мышл:ROOT/я:SUFF/ть:SUFF
@@ -197,17 +204,11 @@
       у:PREF/мышл:ROOT/енн:SUFF/ый:END
    у:PREF/мышл:ROOT/я:SUFF/ть:SUFF
       у:PREF/мышл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+   не:PREF/мысл:ROOT/им:SUFF/о:END
+   не:PREF/мысл:ROOT/им:SUFF/ый:END
 
 
 Оставшиеся нераспределёнными слова:
-бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
-бес:PREF/с:PREF/мысл:ROOT/и:SUFF/е:END
-бес:PREF/с:PREF/мысл:ROOT/иц:SUFF/а:END
-не:PREF/до:PREF/мысл:ROOT/и:SUFF/е:END
-не:PREF/мысл:ROOT/им:SUFF/о:END
-не:PREF/мысл:ROOT/им:SUFF/ый:END
-не:PREF/пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
-не:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
 о:PREF/бес:PREF/с:PREF/мысл:ROOT/е:SUFF/ть:SUFF
 о:PREF/бес:PREF/с:PREF/мысл:ROOT/ени:SUFF/е:END
 о:PREF/бес:PREF/с:PREF/мысл:ROOT/енн:SUFF/ый:END
@@ -218,7 +219,6 @@
 о:PREF/бес:PREF/с:PREF/мысл:ROOT/ива:SUFF/ть:SUFF/ся:POSTFIX
 по:PREF/раз:PREF/мысл:ROOT/и:SUFF/ть:SUFF
 по:PREF/раз:PREF/мышл:ROOT/я:SUFF/ть:SUFF
-пред:PREF/у:PREF/мышл:ROOT/енн:SUFF/ый:END
 со:PREF/у:PREF/мышл:ROOT/енн:SUFF/ик:SUFF
 со:PREF/у:PREF/мышл:ROOT/енн:SUFF/иц:SUFF/а:END
 ---------------------------------------------------

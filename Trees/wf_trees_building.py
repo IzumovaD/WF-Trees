@@ -743,26 +743,25 @@ def diff_2(parent, child):
                     return False
             diff = 1
         elif morphs == "SUFF" or morphs == "POSTFIX":
+            if len(child[morphs]) - len(parent[morphs]) < 0:
+                return False
             for elem in parent[morphs]:
                 if not (elem in child[morphs]):
                     return False
             diff += len(child[morphs]) - len(parent[morphs])
-            if diff > 1:
-                return False
     if diff != 2:
         return False
     return True
 
 # функция поиска производного слова, образованного с помощью одной приставки и одного суффикса
-def search_derivate_for_word_2(morphs_key, nest, pos_tags, proc_words, reflexive_verbs, pos_tag):
+def search_derivate_for_word_2(morphs_key, nest, pos_tags, proc_words, reflexive_verbs):
     childs = []
     for word in nest:
-        if pos_tags[word] == pos_tag:
-            if not ((word in proc_words) or (word in reflexive_verbs)):
-                morphs_word = morph_selection(word, pos_tags)
-                if diff_2(morphs_key, morphs_word):
-                    childs.append(word)
-                    proc_words.append(word)
+        if not ((word in proc_words) or (word in reflexive_verbs)):
+            morphs_word = morph_selection(word, pos_tags)
+            if diff_2(morphs_key, morphs_word):
+                childs.append(word)
+                proc_words.append(word)
     return childs
 
 # функция формирования словообразовательных цепочек (с разницей в 2 морфемы: приставка + суффикс или приставка + постфикс)
@@ -774,7 +773,7 @@ def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags
             morphs_key = morph_selection(key, pos_tags)
             if len(morphs_key["ROOT"]) == 1:
                 childs = search_derivate_for_word_2(morphs_key, nest,
-                                                    pos_tags, proc_words, reflexive_verbs, pos_tags[key])
+                                                    pos_tags, proc_words, reflexive_verbs)
         if len(childs) != 0:
             for child in childs:
                 parrent_words[key].append(child)

@@ -53,6 +53,10 @@ def morph_selection(word, pos_tags):
     if pos_tags[word] == "VERB":
         if res["SUFF"][len(res["SUFF"])-1] in form_suffs:
             del res["SUFF"][len(res["SUFF"])-1]
+    # удаление мягкого знака на конце суффикса (чередующиеся суффиксы - л/ль, ост/ость и т.д)
+    for i in range(len(res["SUFF"])):
+        if res["SUFF"][i][-1] == 'ь':
+            res["SUFF"][i] = res["SUFF"][i][:-1]
     return res
 
 # функция определения части речи слова
@@ -208,13 +212,28 @@ def search_imperfective_verbs(nest, morph, pos_tags):
 def diff_1_any(parent, child):
     diff = 0
     for morphs in parent:
+        if morphs == "PREF":
+            if len(child[morphs]) - len(parent[morphs]) > 0:
+                for i in range(len(parent[morphs])):
+                    if parent[morphs][i] != child[morphs][i+1]:
+                        return False
+            elif len(child[morphs]) == len(parent[morphs]):
+                for i in range(len(parent[morphs])):
+                    if parent[morphs][i] != child[morphs][i]:
+                        return False
+            else: 
+                return False
+            diff += len(child[morphs]) - len(parent[morphs])
+            if diff > 1: 
+                return False
         # может быть алломорфный корень
-        if morphs != "ROOT":
-            tmp = parent[morphs]
-            for elem in tmp:
+        elif morphs != "ROOT":
+            for elem in parent[morphs]:
                 if not (elem in child[morphs]):
                     return False
-            diff += len(child[morphs]) - len(tmp)
+            diff += len(child[morphs]) - len(parent[morphs])
+            if diff > 1: 
+                return False
     if diff == 1 or diff == 0:
         return True
     else:
@@ -222,6 +241,11 @@ def diff_1_any(parent, child):
     
 # функция, возвращающая True, если child отличается от parent только добавлением одного конкретного морфа (или если разницы нет)
 def diff_1(parent, child, morph):
+    diff = 0
+    # для постфикса нужно сразу проверить корень (вариант не допускается)
+    if morph == "POSTFIX":
+        if parent["ROOT"] != child["ROOT"]:
+            return False
     for morphs in parent:
         if morphs != morph and morphs != "ROOT":
             for elem in parent[morphs]:
@@ -229,20 +253,37 @@ def diff_1(parent, child, morph):
                     return False
             if len(child[morphs]) != len(parent[morphs]):
                 return False
-        else:
-            # может быть алломорфный корень
-            if morphs == morph:
-                for elem in parent[morphs]:
-                    if not (elem in child[morphs]):
+        # если указанный аффикс - приставка
+        elif morphs == morph == "PREF":
+            if len(child[morphs]) - len(parent[morphs]) > 0:
+                # приставка может наращиваться только слева
+                for i in range(len(parent[morphs])):
+                    if parent[morphs][i] != child[morphs][i+1]:
                         return False
-                diff = len(child[morphs]) - len(parent[morphs])
-                if diff != 1 and diff != 0:
+            elif len(child[morphs]) == len(parent[morphs]):
+                for i in range(len(parent[morphs])):
+                    if parent[morphs][i] != child[morphs][i]:
+                        return False
+            else: 
+                return False
+            diff = len(child[morphs]) - len(parent[morphs])
+            if diff > 1: 
+                return False
+        # если указанный аффикс - суффикс или постфикс
+        elif morphs == morph:
+            for elem in parent[morphs]:
+                if not (elem in child[morphs]):
                     return False
+            diff = len(child[morphs]) - len(parent[morphs])
+            if diff > 1: 
+                return False
+    if diff != 1 and diff != 0:
+        return False
     return True
 
 # функция поиска производного слова для простого существительного
 def search_derivate_for_noun(morphs_key, nest, diminutive_nouns, magnifying_nouns, negative_pref_nouns,
-                                      negative_pref_adjectives, negative_pref_verbs, pos_tags, proc_words):
+                             negative_pref_adjectives, negative_pref_verbs, reflexive_verbs, pos_tags, proc_words):
     childs = []
     # 1. уменьшительно-ласкательные существительные
     for word in diminutive_nouns:
@@ -279,7 +320,7 @@ def search_derivate_for_noun(morphs_key, nest, diminutive_nouns, magnifying_noun
     for word in negative_pref_adjectives:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     # 4. в) остальные прилагательные
@@ -311,28 +352,28 @@ def search_derivate_for_noun(morphs_key, nest, diminutive_nouns, magnifying_noun
     for word in negative_pref_nouns:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     # 7. а) глаголы, образованные только с помощью приставок (кроме НЕ и АНТИ)
     for word in nest:
         if pos_tags[word] == "VERB":
-            if not ((word in proc_words) or (word in negative_pref_verbs)):
+            if not ((word in proc_words) or (word in negative_pref_verbs) or (word in reflexive_verbs)):
                 morphs_word = morph_selection(word, pos_tags)
                 if diff_1(morphs_key, morphs_word, "PREF"):
                     childs.append(word)
                     proc_words.append(word)
     # 7. б) глаголы, образованные только с помощью приставок НЕ и АНТИ
     for word in negative_pref_verbs:
-        if not (word in proc_words):
+        if not ((word in proc_words) or (word in reflexive_verbs)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     # 7. в) остальные глаголы
     for word in nest:
         if pos_tags[word] == "VERB":
-            if not (word in proc_words):
+            if not ((word in proc_words) or (word in reflexive_verbs)):
                 morphs_word = morph_selection(word, pos_tags)
                 if diff_1_any(morphs_key, morphs_word):
                     childs.append(word)
@@ -341,8 +382,8 @@ def search_derivate_for_noun(morphs_key, nest, diminutive_nouns, magnifying_noun
 
 # функция поиска производного слова для простого прилагательного
 def search_derivate_for_adj(morphs_key, nest, diminutive_adjectives, 
-                                     magnifying_adjectives, negative_pref_adjectives, 
-                                     negative_pref_nouns, pos_tags, proc_words):
+                            magnifying_adjectives, negative_pref_adjectives, 
+                            negative_pref_nouns, pos_tags, proc_words):
     childs = []
     # 1. уменьшительно-ласкательные прилагательные
     for word in diminutive_adjectives:
@@ -387,7 +428,7 @@ def search_derivate_for_adj(morphs_key, nest, diminutive_adjectives,
     for word in negative_pref_nouns:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     # 5. в) остальные существительные
@@ -411,17 +452,17 @@ def search_derivate_for_adj(morphs_key, nest, diminutive_adjectives,
     for word in negative_pref_adjectives:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     return childs
 
 # функция поиска производного слова для простого глагола
 def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_participles,
-                                      reflexive_participles, imperfective_verbs,
-                                      single_action_verbs, repeated_action_verbs,
-                                      abstract_nouns, nouns_persons_by_action, 
-                                      negative_pref_verbs, pos_tags, proc_words):
+                            reflexive_participles, imperfective_verbs,
+                            single_action_verbs, repeated_action_verbs,
+                            abstract_nouns, nouns_persons_by_action, 
+                            negative_pref_verbs, pos_tags, proc_words):
     childs = []
     # 1. возвратные глаголы
     for word in reflexive_verbs:
@@ -441,14 +482,14 @@ def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_pa
     for word in single_action_verbs:
         if not ((word in proc_words) or (word in reflexive_verbs)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
+            if diff_1_any(morphs_key, morphs_word):
                 childs.append(word)
                 proc_words.append(word)
     # 4. глаголы, обозначающие многократное действие
     for word in repeated_action_verbs:
         if not ((word in proc_words) or (word in reflexive_verbs)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
+            if diff_1_any(morphs_key, morphs_word):
                 childs.append(word)
                 proc_words.append(word)
     # 5. остальные глаголы, образованные с помощью суффиксов
@@ -474,7 +515,7 @@ def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_pa
     for word in negative_pref_verbs:
         if not ((word in proc_words) or (word in reflexive_verbs)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     # 7. причастия
@@ -497,14 +538,14 @@ def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_pa
     for word in abstract_nouns:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
+            if diff_1_any(morphs_key, morphs_word):
                 childs.append(word)
                 proc_words.append(word)
     # 10. существительные, обозначающие названия лиц по действию
     for word in nouns_persons_by_action:
         if not (word in proc_words):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1(morphs_key, morphs_word, "SUFF"):
+            if diff_1_any(morphs_key, morphs_word):
                 childs.append(word)
                 proc_words.append(word)
     # 11. остальные существительные
@@ -535,7 +576,7 @@ def search_derivate_for_verb(morphs_key, nest, reflexive_verbs, reflexive_adv_pa
     return childs
 
 # функция поиска производного слова для простого наречия
-def search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words):
+def search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words, reflexive_verbs):
     childs = []
     # 1. прилагательные
     for word in nest:
@@ -564,7 +605,7 @@ def search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words):
     # 4. глаголы
     for word in nest:
         if pos_tags[word] == "VERB":
-            if not (word in proc_words):
+            if not ((word in proc_words) or (word in reflexive_verbs)):
                 morphs_word = morph_selection(word, pos_tags)
                 if diff_1_any(morphs_key, morphs_word):
                     childs.append(word)
@@ -573,8 +614,8 @@ def search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words):
 
 # функция поиска производного слова для простого деепричастия
 def search_derivate_for_adv_participle(morphs_key, nest,
-                                                reflexive_adv_participles, negative_pref_adv_participles,
-                                                pos_tags, proc_words):
+                                        reflexive_adv_participles, negative_pref_adv_participles,
+                                        pos_tags, proc_words):
     childs = []
     # 1. возвратные деепричастия
     for word in reflexive_adv_participles:
@@ -596,15 +637,15 @@ def search_derivate_for_adv_participle(morphs_key, nest,
     for word in negative_pref_adv_participles:
         if not ((word in proc_words) or (word in reflexive_adv_participles)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     return childs
 
 # функция поиска производного слова для простого причастия
 def search_derivate_for_participle(morphs_key, nest,
-                                            reflexive_participles, negative_pref_participles,
-                                            pos_tags, proc_words):
+                                    reflexive_participles, negative_pref_participles,
+                                    pos_tags, proc_words):
     childs = []
     # 1. возвратные причастия
     for word in reflexive_participles:
@@ -626,7 +667,7 @@ def search_derivate_for_participle(morphs_key, nest,
     for word in negative_pref_participles:
         if not ((word in proc_words) or (word in reflexive_participles)):
             morphs_word = morph_selection(word, pos_tags)
-            if diff_1_any(morphs_key, morphs_word):
+            if diff_1(morphs_key, morphs_word, "PREF"):
                 childs.append(word)
                 proc_words.append(word)
     return childs
@@ -647,9 +688,9 @@ def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnify
             if pos_tags[key] == "NOUN":
                 morphs_key = morph_selection(key, pos_tags)
                 childs = search_derivate_for_noun(morphs_key, nest, diminutive_nouns, 
-                                                            magnifying_nouns, negative_pref_nouns, 
-                                                            negative_pref_adjectives, negative_pref_verbs,
-                                                            pos_tags, proc_words)
+                                                  magnifying_nouns, negative_pref_nouns, 
+                                                  negative_pref_adjectives, negative_pref_verbs, reflexive_verbs,
+                                                  pos_tags, proc_words)
             # производящее слово - прилагательное
             if pos_tags[key] == "ADJ":
                 morphs_key = morph_selection(key, pos_tags)
@@ -667,7 +708,7 @@ def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnify
             # производящее слово - наречие
             if pos_tags[key] == "ADVERB":
                 morphs_key = morph_selection(key, pos_tags)
-                childs = search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words)
+                childs = search_derivate_for_adverb(morphs_key, nest, pos_tags, proc_words, reflexive_verbs)
             # производящее слово - деепричастие
             if pos_tags[key] == "ADV PARTICIPLE":
                 morphs_key = morph_selection(key, pos_tags)
@@ -689,23 +730,27 @@ def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnify
         if word in nest:
             nest.remove(word)
 
-# функция, возвращающая True, если child отличается от parent только добавлением одной приставки и одного суффикса
+# функция, возвращающая True, если child отличается от parent только добавлением одной приставки и одного суффикса или
+# одной приставки и одного постфикса
 def diff_2(parent, child):
+    diff = 0
     for morphs in parent:
-        if morphs != "PREF" and morphs != "ROOT" and morphs != "SUFF":
+        if morphs == "PREF":
+            if len(child[morphs]) - len(parent[morphs]) != 1:
+                return False
+            for i in range(len(parent[morphs])):
+                if parent[morphs][i] != child[morphs][i+1]:
+                    return False
+            diff = 1
+        elif morphs == "SUFF" or morphs == "POSTFIX":
             for elem in parent[morphs]:
                 if not (elem in child[morphs]):
                     return False
-            if len(child[morphs]) != len(parent[morphs]):
+            diff += len(child[morphs]) - len(parent[morphs])
+            if diff > 1:
                 return False
-        else:
-            # может быть алломорфный корень
-            if morphs != "ROOT":
-                for elem in parent[morphs]:
-                    if not (elem in child[morphs]):
-                        return False
-                if len(child[morphs]) - len(parent[morphs]) != 1:
-                    return False
+    if diff != 2:
+        return False
     return True
 
 # функция поиска производного слова, образованного с помощью одной приставки и одного суффикса
@@ -720,7 +765,7 @@ def search_derivate_for_word_2(morphs_key, nest, pos_tags, proc_words, reflexive
                     proc_words.append(word)
     return childs
 
-# функция формирования словообразовательных цепочек (с разницей в 2 морфемы: приставка + суффикс)
+# функция формирования словообразовательных цепочек (с разницей в 2 морфемы: приставка + суффикс или приставка + постфикс)
 def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags):
     for key in parrent_words:
         childs = []
@@ -815,7 +860,7 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
             if old_len - len(nest) == 0:
                 break
         old_len = len(nest)
-        # учитываем разницу в 2 морфемы: приставка + суффикс
+        # учитываем разницу в 2 морфемы: приставка + суффикс или приставка + постфикс
         search_derivate_2(res, proc_words, reflexive_verbs, nest, pos_tags)
         if old_len - len(nest) == 0:
                 break

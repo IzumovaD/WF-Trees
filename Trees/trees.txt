@@ -27,6 +27,7 @@
    брызж:ROOT/ущ:SUFF/ий:END
    брызг:ROOT/а:SUFF/л:SUFF/о:END
       брызг:ROOT/а:SUFF/л:SUFF/к:SUFF/а:END
+      брызг:ROOT/а:SUFF/ль:SUFF/н:SUFF/ый:END
    брызг:ROOT/а:SUFF/нь:SUFF/е:END
    брызг:ROOT/и:END
    вз:PREF/брызг:ROOT/ива:SUFF/ть:SUFF
@@ -38,7 +39,6 @@
 
 
 Оставшиеся нераспределёнными слова:
-брызг:ROOT/а:SUFF/ль:SUFF/н:SUFF/ый:END
 брызг:ROOT/ов:SUFF/ик:SUFF
 ---------------------------------------------------
 дум:ROOT/а:SUFF/ть:SUFF

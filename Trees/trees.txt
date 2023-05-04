@@ -241,3 +241,59 @@
 
 Оставшиеся нераспределёнными слова:
 на:PREF/собач:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+---------------------------------------------------
+борт:ROOT
+   борт:ROOT/ик:SUFF
+   борт:ROOT/ник:SUFF
+   борть:ROOT
+   борт:ROOT/ев:SUFF/ой:END
+   борт:ROOT/н:SUFF/ый:END
+      борт:ROOT/нича:SUFF/нь:SUFF/е:END
+      за:PREF/борт:ROOT/н:SUFF/ый:END
+      на:PREF/борт:ROOT/н:SUFF/ый:END
+      под:PREF/борт:ROOT/н:SUFF/ый:END
+   борт:ROOT/ов:SUFF/ой:END
+      борт:ROOT/ов:SUFF/к:SUFF/а:END
+         от:PREF/борт:ROOT/ов:SUFF/к:SUFF/а:END
+      борт:ROOT/ов:SUFF/щик:SUFF
+      от:PREF/борт:ROOT/ов:SUFF/ыва:SUFF/ть:SUFF
+         от:PREF/борт:ROOT/ов:SUFF/ыва:SUFF/ть:SUFF/ся:POSTFIX
+   борт:ROOT/нич:SUFF/а:SUFF/ть:SUFF
+      борт:ROOT/нич:SUFF/еств:SUFF/о:END
+   от:PREF/борт:ROOT/ова:SUFF/ть:SUFF
+
+
+Оставшиеся нераспределёнными слова:
+---------------------------------------------------
+крыл:ROOT/о:END
+   крыл:ROOT/ышк:SUFF/о:END
+   крыл:ROOT/ан:SUFF
+   крыл:ROOT/ач:SUFF
+   бес:PREF/крыл:ROOT
+      о:PREF/бес:PREF/крыл:ROOT/енн:SUFF/ый:END
+      о:PREF/бес:PREF/крыл:ROOT/ива:SUFF/ть:SUFF
+         о:PREF/бес:PREF/крыл:ROOT/ива:SUFF/ни:SUFF/е:END
+         о:PREF/бес:PREF/крыл:ROOT/ива:SUFF/тель:SUFF
+   бес:PREF/крыл:ROOT/ый:END
+   под:PREF/крыль:ROOT/е:END
+      под:PREF/крыл:ROOT/ок:SUFF
+   крыл:ROOT/ат:SUFF/ый:END
+      крыл:ROOT/ат:SUFF/к:SUFF/а:END
+   крыль:ROOT/чат:SUFF/ый:END
+      крыль:ROOT/чат:SUFF/к:SUFF/а:END
+   над:PREF/крыль:ROOT/я:END
+   вос:PREF/крыл:ROOT/я:SUFF/ть:SUFF
+      вос:PREF/крыл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+      вос:PREF/крыл:ROOT/енн:SUFF/ый:END
+   вс:PREF/крыл:ROOT/и:SUFF/ть:SUFF
+      вс:PREF/крыл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+   о:PREF/крыл:ROOT/и:SUFF/ть:SUFF
+      о:PREF/крыл:ROOT/и:SUFF/ть:SUFF/ся:POSTFIX
+      о:PREF/крыл:ROOT/я:SUFF/ть:SUFF/ся:POSTFIX
+   о:PREF/крыл:ROOT/я:SUFF/ть:SUFF
+   за:PREF/крыл:ROOT/ок:SUFF
+   пред:PREF/крыл:ROOT/ок:SUFF
+
+
+Оставшиеся нераспределёнными слова:
+о:PREF/бес:PREF/крыл:ROOT/и:SUFF/ть:SUFF

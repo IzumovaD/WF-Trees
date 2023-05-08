@@ -1,4 +1,4 @@
-from root_allomorphs import root_allomorphs
+from RuRoot_Allomorphs import root_allomorphs
 import time
 import json
 

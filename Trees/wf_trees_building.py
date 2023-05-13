@@ -51,8 +51,9 @@ def morph_selection(word, pos_tags):
         del res["SUFF"][to_delete]
     # не учитываем формообразующие суффиксы у инфинитивов
     if pos_tags[word] == "VERB":
-        if res["SUFF"][len(res["SUFF"])-1] in form_suffs:
-            del res["SUFF"][len(res["SUFF"])-1]
+        if len(res["SUFF"])-1 >= 0:
+            if res["SUFF"][len(res["SUFF"])-1] in form_suffs:
+                del res["SUFF"][len(res["SUFF"])-1]
     # удаление мягкого знака на конце суффикса (чередующиеся суффиксы - л/ль, ост/ость и т.д)
     for i in range(len(res["SUFF"])):
         if res["SUFF"][i][-1] == 'ь':
@@ -784,7 +785,7 @@ def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags
             nest.remove(word)
 
 # функция обработки словообразовательного гнезда (СГ)
-def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph):
+def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph, not_full):
     # словарь, где ключ (производящее слово) - строка, а значение (производные слова) - список строк
     res = {}
     # список обработанных слов
@@ -796,7 +797,7 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
     # удаляем из гнезда числительные (кроме порядковых - они считаются прилагательными)
     for word in pos_tags:
         if pos_tags[word] == "NUMR":
-            nest.discard(word)
+            nest.remove(word)
     vertex = ''
     # проверяем, выбрана ли уже вершина для дерева
     for line in custom_vertices:
@@ -865,10 +866,13 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph)
                 break
     # оставшиеся нераспределенными слова
     undistributed_words.append(nest)
+    if len(undistributed_words) > 0:
+        not_full += 1
     return res
 
 # основная функция обработки всех групп однокоренных слов
 def main_processing(data, custom_vertices):
+    not_full = 0
      # список списков, каждый список - нераспределнные в дереве слова
     undistributed_words = []
     start_time = time.time()
@@ -883,7 +887,7 @@ def main_processing(data, custom_vertices):
         # слова в каждом гнезде сортируем в алфавитном порядке
         nest.sort()
         # обработка текущей группы слов
-        word_formation_nests.append(nest_processing(vertices, custom_vertices, nest, undistributed_words, morph))
+        word_formation_nests.append(nest_processing(vertices, custom_vertices, nest, undistributed_words, morph, not_full))
 
     filename = 'trees.json'
     with open(filename, 'w') as f:
@@ -892,6 +896,7 @@ def main_processing(data, custom_vertices):
     print_nests_in_file(word_formation_nests, vertices, undistributed_words)
     print("--- %s seconds ---\n" % (time.time() - start_time))
     print("Общее число деревьев: ", len(data))
+    print("Общее число неполных групп: ", not_full)
 
 # функция печати одного гнезда
 def print_nest(nest, key, k):

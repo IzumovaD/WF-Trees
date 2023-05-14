@@ -1,6 +1,6 @@
 import argparse
-from groupping_roots import main_processing_roots
-from groupping_words import main_processing_words
+from roots_groupping import main_processing_roots
+from words_groupping import main_processing_words
 
 def main():
     parser = argparse.ArgumentParser(description=

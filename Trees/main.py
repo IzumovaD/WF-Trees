@@ -1,6 +1,6 @@
 import argparse
 import json
-from wf_trees_building import main_processing
+from trees_construction import main_processing
 
 def main():
     parser = argparse.ArgumentParser(description="Построение словообразовательных деревьев")

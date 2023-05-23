@@ -1,2 +1,9 @@
 брызг:ROOT/а:SUFF/ть:SUFF
 дум:ROOT/а:SUFF/ть:SUFF
+пеш:ROOT/ий:END
+пих:ROOT/а:SUFF/ть:SUFF
+рас:ROOT/ти:SUFF
+раз:ROOT/и:SUFF/ть:SUFF
+род:ROOT/и:SUFF/ть:SUFF
+дрож:ROOT/а:SUFF/ть:SUFF
+дорог:ROOT/ой:END

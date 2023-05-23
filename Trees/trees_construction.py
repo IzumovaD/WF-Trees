@@ -674,7 +674,7 @@ def search_derivate_for_participle(morphs_key, nest,
     return childs
 
 # функция формирования словообразовательных цепочек (с разницей в одну морфему, учитываем только добавление аффиксов)
-def search_derivate_1(parrent_words, proc_words, nest, diminutive_nouns, magnifying_nouns, 
+def search_derivate_1_affix(parrent_words, proc_words, nest, diminutive_nouns, magnifying_nouns, 
                     diminutive_adjectives, magnifying_adjectives, reflexive_verbs, 
                     reflexive_adv_participles, reflexive_participles,
                     imperfective_verbs, single_action_verbs, repeated_action_verbs,
@@ -766,7 +766,7 @@ def search_derivate_for_word_2(morphs_key, nest, pos_tags, proc_words, reflexive
     return childs
 
 # функция формирования словообразовательных цепочек (с разницей в 2 морфемы: приставка + суффикс или приставка + постфикс)
-def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags):
+def search_derivate_2_affixes(parrent_words, proc_words, reflexive_verbs, nest, pos_tags):
     for key in parrent_words:
         childs = []
         # производящее слово - существительное, прилагательное или глагол
@@ -785,7 +785,7 @@ def search_derivate_2(parrent_words, proc_words, reflexive_verbs, nest, pos_tags
             nest.remove(word)
 
 # функция обработки словообразовательного гнезда (СГ)
-def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph, not_full):
+def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph):
     # словарь, где ключ (производящее слово) - строка, а значение (производные слова) - список строк
     res = {}
     # список обработанных слов
@@ -851,7 +851,7 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph,
     while len(nest) != 0:
         while len(nest) != 0:
             old_len = len(nest)
-            search_derivate_1(res, proc_words, nest, diminutive_nouns, magnifying_nouns, 
+            search_derivate_1_affix(res, proc_words, nest, diminutive_nouns, magnifying_nouns, 
                             diminutive_adjectives, magnifying_adjectives, reflexive_verbs, 
                             reflexive_adv_participles, reflexive_participles,
                             imperfective_verbs, single_action_verbs, repeated_action_verbs,
@@ -861,18 +861,15 @@ def nest_processing(vertices, custom_vertices, nest, undistributed_words, morph,
                 break
         old_len = len(nest)
         # учитываем разницу в 2 морфемы: приставка + суффикс или приставка + постфикс
-        search_derivate_2(res, proc_words, reflexive_verbs, nest, pos_tags)
+        search_derivate_2_affixes(res, proc_words, reflexive_verbs, nest, pos_tags)
         if old_len - len(nest) == 0:
                 break
     # оставшиеся нераспределенными слова
     undistributed_words.append(nest)
-    if len(undistributed_words) > 0:
-        not_full += 1
     return res
 
 # основная функция обработки всех групп однокоренных слов
 def main_processing(data, custom_vertices):
-    not_full = 0
      # список списков, каждый список - нераспределнные в дереве слова
     undistributed_words = []
     start_time = time.time()
@@ -887,7 +884,7 @@ def main_processing(data, custom_vertices):
         # слова в каждом гнезде сортируем в алфавитном порядке
         nest.sort()
         # обработка текущей группы слов
-        word_formation_nests.append(nest_processing(vertices, custom_vertices, nest, undistributed_words, morph, not_full))
+        word_formation_nests.append(nest_processing(vertices, custom_vertices, nest, undistributed_words, morph))
 
     filename = 'trees.json'
     with open(filename, 'w') as f:
@@ -896,7 +893,6 @@ def main_processing(data, custom_vertices):
     print_nests_in_file(word_formation_nests, vertices, undistributed_words)
     print("--- %s seconds ---\n" % (time.time() - start_time))
     print("Общее число деревьев: ", len(data))
-    print("Общее число неполных групп: ", not_full)
 
 # функция печати одного гнезда
 def print_nest(nest, key, k):
